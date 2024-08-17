@@ -147,7 +147,7 @@ def classify_images(msg_labels, tree):
         return
 
     # Get the class indices
-    class_indices = {0: 'CONTAMINATION', 1: 'DAMAGE', 2: 'PASS', 3: 'SPLIT'}
+    class_indices = {0: 'CONTAMINATION', 1: 'DAMAGE', 2: 'ETCH', 3: 'PASS', 4: 'SPLIT'}
     class_counts = {class_name: 0 for class_name in class_indices.values()}
 
     # Convert predictions to class labels
@@ -253,7 +253,7 @@ except:
 # dest_dir = 'C:/Users/daled/Documents/Flatiron/Course_material/Phase_5/LMIS_Image_Classification/Data/Processed'
 
 # Define the path to the model
-model_path = os.path.join(application_path, 'Model_Multi_20.h5')
+model_path = os.path.join(application_path, 'Model_Multi_21.h5')
 
 # Load the model
 model = load_model(model_path)
