@@ -51,6 +51,9 @@ Here is the model iterations accuracy trend, with some highlights and lowlights 
 Best performing CNN architecture is shown below:
 <img src="./Images/best_architecture.jpg" alt="description" width="100%" height="auto">
 
+Best performing CNN results are shown below:
+<img src="./Images/best_results.jpg" alt="description" width="100%" height="auto">
+
 Here is a gif demonstrating operation of the classification executable, which moves unclassified images to classification folders and logs results to a csv logfile:
 <img src="./Images/classifier.gif" alt="description" width="100%" height="auto">
 
