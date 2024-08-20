@@ -11,6 +11,10 @@ import tensorflow as tf
 import warnings
 warnings.filterwarnings('ignore')
 
+# Define the model name and target size globally
+model_name = 'Model_Multi_28.h5'
+# target_size = (330, 358)  # scale_factor 0.35; model 21, 23
+target_size = (518, 563)    # scale factor 0.55; model 28
 
 def get_truncated_path(path, max_length=110):
     ellipsis_index = -2
@@ -84,9 +88,6 @@ def classify_images(msg_labels, tree):
         tree.delete(item)
     tree.update_idletasks()
 
-    # Define the target size for the images
-    target_size = (330, 358)
-
     # check to see if the source directory exists
     if not os.path.exists(source_dir):
         msg_labels[0].config(text='Error: The source directory does not exist. Please select a valid destination directory and try again.')
@@ -134,6 +135,9 @@ def classify_images(msg_labels, tree):
     # Predict the classes of the images
     try:
         predictions = model.predict(source_generator)
+        model_28_pass_prob_adjustment = -0.62
+        predictions[:, 3] = predictions[:, 3] + model_28_pass_prob_adjustment
+
     except Exception as e:
         msg_labels[0].config(text='Error: Unable to classify images. Please check the source directory and try again.')
         msg_labels[0].update_idletasks()
@@ -253,7 +257,7 @@ except:
 # dest_dir = 'C:/Users/daled/Documents/Flatiron/Course_material/Phase_5/LMIS_Image_Classification/Data/Processed'
 
 # Define the path to the model
-model_path = os.path.join(application_path, 'Model_Multi_21.h5')
+model_path = os.path.join(application_path, model_name)
 
 # Load the model
 model = load_model(model_path)
