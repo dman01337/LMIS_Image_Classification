@@ -1,4 +1,4 @@
-<img src="./Images/title.jpg" alt="description" width="70%" height="auto">
+<img src="./Images/title.jpg" alt="description" width="100%" height="auto">
 
 # Computer Vision Quality Inspection for Thermo Fisher Scientific
 ## Analysis Overview
@@ -43,19 +43,19 @@ Implementation:
 
 ## Results
 Class weights were imposed during model training to account for class imbalance shown below:
-<img src="./Images/class_dist.jpg" alt="description" width="70%" height="auto">
+<img src="./Images/class_dist.jpg" alt="description" width="100%" height="auto">
 
 Here is the model iterations accuracy trend, with some highlights and lowlights called out:
-<img src="./Images/model_trend.jpg" alt="description" width="70%" height="auto">
+<img src="./Images/model_trend.jpg" alt="description" width="100%" height="auto">
 
 Best performing CNN architecture is shown below:
-<img src="./Images/best_architecture.jpg" alt="description" width="70%" height="auto">
+<img src="./Images/best_architecture.jpg" alt="description" width="100%" height="auto">
 
 Here is a gif demonstrating operation of the classification executable, which moves unclassified images to classification folders and logs results to a csv logfile:
-<img src="./Images/classifier.gif" alt="description" width="70%" height="auto">
+<img src="./Images/classifier.gif" alt="description" width="100%" height="auto">
 
 Here is a gif demonstrating the Power BI interactive production dashboard that pulls from the csv logfile (fictitious data shown, not real TFS production data):
-<img src="./Images/dashboard.gif" alt="description" width="70%" height="auto">
+<img src="./Images/dashboard.gif" alt="description" width="100%" height="auto">
 
 
 ## Conclusions
