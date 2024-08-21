@@ -45,7 +45,7 @@ Implementation:
 Class weights were imposed during model training to account for class imbalance shown below:
 <img src="./Images/class_dist.jpg" alt="description" width="100%" height="auto">
 
-Here is the model iterations accuracy trend, with some highlights and lowlights called out:
+Here is the model accuracy and PASS FPR trend by model iteration, with some highlights and lowlights called out:
 <img src="./Images/model_trend.jpg" alt="description" width="100%" height="auto">
 
 Best performing CNN architecture is shown below:
@@ -62,11 +62,17 @@ Here is a gif demonstrating the Power BI interactive production dashboard that p
 
 
 ## Conclusions
-Best Model: Deep (5 Layers) Neural Network Hyperband Tuned
+Best Model: CNN with 4 CONV+POOL layers + MLP with 2 hidden layers. (See Notebook for detailed architecture)
 - Best Scores:
-...
-- Parameters:
-...
+   - Results after probability threshold was adjusted to obtain PASS false-positive rate = 0.89%:
+    - Test Accuracy = 80.48%
+    - PASS False-negative Rate = 18.1%
+    - PASS AUC = 99%
+    - Split AUC = 98%
+    - Etch AUC = 98%
+    - Damage AUC = 94%
+    - Contamination AUC = 93%
+- Based on the fact that the greatest increase in model performance came about by correcting the image labels, and no further architectural / hyperparameter adjustments could break the 85-87% accuracy barrier, I believe the next move to improve the model is to acquire more and better data.
 
 
 ## Recommendations
@@ -89,7 +95,7 @@ Best Model: Deep (5 Layers) Neural Network Hyperband Tuned
 
 
 ## For More Information
-To see the full data analysis check out the [Jupyter Notebook](./Spam_Filter_Notebook.ipynb) or review the [presentation](./Spam_Filter_Presentation.pdf).
+To see the full data analysis check out the [Jupyter Notebook](./LMIS_Classification_Notebook.ipynb) or review the [Presentation](./LMIS_Classification_Presentation.pdf).
 
 For any additional questions please contact Dale DeFord at:
 - daledeford@gmail.com
@@ -98,7 +104,8 @@ For any additional questions please contact Dale DeFord at:
 ## Repository Structure
 ```
 ├── images
-├── README.md
+├── src
+├── LMIS_Classification_Notebook.ipynb
 ├── LMIS_Classification_Presentation.pdf
-└── LMIS_Classification_Notebook.ipynb
+└── README.md
 ```
