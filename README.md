@@ -1,35 +1,30 @@
 <img src="./Images/title.jpg" alt="description" width="100%" height="auto">
 
 # Computer Vision Quality Inspection for Thermo Fisher Scientific
-## Analysis Overview
-This project analyzes over 7k production quality images from Thermo Fisher Scientic (TFS). We will perform Exporatory Data Analysys (EDA) to assess the data, and create machine learning models to predict the outcome of the quality classification of the images.
-
-## Business Problem
-[TFS in Hillsboro, Oregon](https://www.thermofisher.com/us/en/home/electron-microscopy/nanoports/hillsboro-nanoport.html) manufactures Scanning Electron Microscopes (SEM).  In production, Liquid Metal Ion Source (LMIS) units are imaged at a SEM and human inspected for quality issues.  This process is costly and can be problematic due to varying human biases. Our goal is to create an automated Computer Vision process that will accurately classify LMIS SEM images, thus reducing labor cost and quality problems incurred due to varying human inspection biases.
-
+[Thermo Fisher Scientific (TFS) in Hillsboro, Oregon](https://www.thermofisher.com/us/en/home/electron-microscopy/nanoports/hillsboro-nanoport.html) manufactures cutting-edge Scanning Electron Microscopes (SEM). Currently, Liquid Metal Ion Source (LMIS) units are manually inspected for quality, a process that is both costly and prone to human error. This project aims to revolutionize this by implementing an automated Computer Vision system to classify LMIS SEM images accurately, reducing labor costs and eliminating human biases. Using Convolutional Neural Network (CNN) modeling via TensorFlow, the final model achieves 80.5% categorical accuracy while maintaining less than 1% false positive rate.
 
 ## Data
 LMIS SEM images were downloaded from TFS under Non-Disclosure Agreement (NDA):
 - 7,019 grayscale SEM image files
 - Images pre-labeled and sorted into 5 class folders
 - Due to the NDA: 
-   - Source image data is not available to the reader. 
+   - Source image data is not available to the reader; thus, models are not reproducible.
    - Details containing intellectual property are intentionally omitted.
 
 
 ## Methods
 Exploratory Data Analysis (EDA):
-- Each image in the data set was reviewed for classification error, and moved to the correct classification folder if necessary.
+- Each image in the data set was reviewed for classification error and moved to the correct classification folder if necessary.
    - Collaborated with a subject matter expert at TFS for classification instructions
-   - Noted that some images contain features of multiple non-PASS classification.  In these cases, the most dominent feature was chosen for the classification.
+   - Noted that some images contain features of multiple non-PASS classification.  In these cases, the most dominant feature was chosen for the classification.
 - Class imbalance was noted during EDA as shown below.
 
 Data Preparation:
-- Image files were randomly moved into Training(70%), Validation(15%), and Test(15%) folders, with each classification represented within subfolders for each set.
+- Image files were randomly moved into training(70%), validation(15%), and test(15%) folders, with each classification represented within subfolders for each set.
 - Data augmentation was used on the images during model training to improve sample variance and avoid overfitting
 
 Modeling:
-- Convolutional Neural Network (CNN) was chosen as the modeling architecture due to known high performance for Computer Vision applications.
+- CNN was chosen as the modeling architecture due to known high performance for Computer Vision applications.
 - A Baseline multi-classification model was established and iterated upon with strategic adjustments to hyperparameters.
 - Each model was trained and validated with the respective data sets during each epoch.
 - After training, each model was tested with the holdout test set and evaluated for accuracy metrics.
@@ -38,8 +33,8 @@ Modeling:
 - The final CNN had the probability threshold for the PASS class adjusted to limit false positive rate so as not to exceed 1% (for quality purposes, we do not want to ship failing units)
 
 Implementation:
-- Because the manufacturing production network is behind a firewall and cannot access online modeling tools such as Flask or Streamlit, an executable program was created in python for the purpose of classifying production images.
-- An interactive PowerBI dashboard was developed and provided for the purpose of monitoring production performance of the executable classifier, which logs its ongoing results to a csv.
+- Because the manufacturing production network at TFS is behind a firewall and cannot access online modeling tools such as Flask or Streamlit, an executable program was created in python for the purpose of classifying production images and logging the results to a CSV file.
+- An interactive PowerBI dashboard was developed and provided for the purpose of monitoring production performance of the executable classifier, which queries data from the CSV logfile.
 
 ## Results
 Class weights were imposed during model training to account for class imbalance shown below:
@@ -54,10 +49,10 @@ Best performing CNN architecture is shown below:
 Best performing CNN results are shown below:
 <img src="./Images/best_results.jpg" alt="description" width="100%" height="auto">
 
-Here is a gif demonstrating operation of the classification executable, which moves unclassified images to classification folders and logs results to a csv logfile:
+Here is a gif demonstrating operation of the classification executable, which moves unclassified images into classification folders and logs results to a CSV logfile:
 <img src="./Images/classifier.gif" alt="description" width="100%" height="auto">
 
-Here is a gif demonstrating the Power BI interactive production dashboard that pulls from the csv logfile (fictitious data shown, not real TFS production data):
+Here is a gif demonstrating the Power BI interactive production dashboard that pulls from the CSV logfile (fictitious data shown, not real TFS production data):
 <img src="./Images/dashboard.gif" alt="description" width="100%" height="auto">
 
 
@@ -72,7 +67,7 @@ Best Model: CNN with 4 CONV+POOL layers + MLP with 2 hidden layers. (See Noteboo
     - Etch AUC = 98%
     - Damage AUC = 94%
     - Contamination AUC = 93%
-- Based on the fact that the greatest increase in model performance came about by correcting the image labels, and no further architectural / hyperparameter adjustments could break the 85-87% accuracy barrier, I believe the next move to improve the model is to acquire more and better data.
+- Since the greatest increase in model performance came about by correcting the image labels, and no further architectural / hyperparameter adjustments could break the 85-87% accuracy barrier, I believe the next move to improve the model is to acquire more and better data.
 
 
 ## Recommendations
@@ -88,7 +83,7 @@ Best Model: CNN with 4 CONV+POOL layers + MLP with 2 hidden layers. (See Noteboo
 ## Next Steps
 1. Continue to improve the model:
    - Need more data!
-      - Subject matter expert labeling of many more images
+      - Subject matter expert labeling of at least 3000 images in each class
       - Train with ‘clean’ samples, i.e., no images that could be more than 1 class
    - Continue attempting transfer learning architectures, i.e., ResNet50
 2. If adequate model accuracy can be achieved, implement another production pilot to eliminate human inspection of all images
