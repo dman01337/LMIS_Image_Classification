@@ -3,6 +3,8 @@
 # Computer Vision Quality Inspection for Thermo Fisher Scientific
 [Thermo Fisher Scientific (TFS) in Hillsboro, Oregon](https://www.thermofisher.com/us/en/home/electron-microscopy/nanoports/hillsboro-nanoport.html) manufactures cutting-edge Scanning Electron Microscopes (SEM). Currently, Liquid Metal Ion Source (LMIS) units are manually inspected for quality, a process that is both costly and prone to human error. This project aims to revolutionize this by implementing an automated Computer Vision system to classify LMIS SEM images accurately, reducing labor costs and eliminating human biases. Using Convolutional Neural Network (CNN) modeling via TensorFlow, the final model achieves 80.5% categorical accuracy while maintaining less than 1% false positive rate.
 
+(TLDR? Jump to the video presentation [here](https://youtu.be/1yd4O75IYME)!)
+
 ## Data
 LMIS SEM images were downloaded from TFS under Non-Disclosure Agreement (NDA):
 - 7,019 grayscale SEM image files
@@ -90,7 +92,7 @@ Best Model: CNN with 4 CONV+POOL layers + MLP with 2 hidden layers. (See Noteboo
 
 
 ## For More Information
-To see the full data analysis check out the [Jupyter Notebook](./LMIS_Classification_Notebook.ipynb) or review the [Presentation](./LMIS_Classification_Presentation.pdf).
+Please check out the [Jupyter Notebook](./LMIS_Classification_Notebook.ipynb), review the presentation slides [here](./LMIS_Classification_Presentation.pdf), or visit my you tube channel to check out the video presentation [here](https://youtu.be/1yd4O75IYME).
 
 For any additional questions please contact Dale DeFord at:
 - daledeford@gmail.com
