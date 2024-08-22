@@ -83,7 +83,7 @@ Best Model: CNN with 4 CONV+POOL layers + MLP with 2 hidden layers. (See Noteboo
 ## Next Steps
 1. Continue to improve the model:
    - Need more data!
-      - Subject matter expert labeling of at least 3000 images in each class
+      - Subject matter expert labeling of at least 2000 images in each class
       - Train with ‘clean’ samples, i.e., no images that could be more than 1 class
    - Continue attempting transfer learning architectures, i.e., ResNet50
 2. If adequate model accuracy can be achieved, implement another production pilot to eliminate human inspection of all images
